@@ -38,6 +38,18 @@ O JAR é gerado em `dist/LivrariaFacilCore.jar`. Os testes usam repositórios fa
 - `Venda.getItens` expõe uma visão não modificável, evitando que consumidores alterem a venda sem passar pelo domínio.
 - Eliminados os construtores que montavam automaticamente serviços/DAOs concretos. Essa composição é responsabilidade do ponto de entrada do aplicativo, não do serviço.
 
+Classes e métodos afetados no novo projeto:
+
+| Classe/contrato | Alteração |
+|---|---|
+| `LivrariaService` / `ILivrariaService` | Casos de uso sem dependência de Swing/JDBC; dependências obrigatórias por construtor; validações e agrupamento de estoque em `finalizarVenda`. |
+| `ClienteRepository`, `LivroRepository`, `VendaRepository` | Portas específicas para desacoplar persistência e documentar a transação de venda. |
+| `ItemDeVenda` | Item imutável com preço unitário capturado no construtor; subtotal derivado desse preço. |
+| `Venda` | Lista exposta sem mutabilidade externa e data de domínio como `LocalDateTime`. |
+| `Cliente`, `Livro` | Mantidos como modelos de domínio sem referências ou formatação dependentes de Swing. `Livro.reduzirEstoque` também rejeita quantidades não positivas. |
+
+As telas `TelaInicial`, `CadastroCliente`, `CadastroLivro`, `ConsultarEstoque` e `RealizarVenda` continuam no projeto desktop original; elas foram deliberadamente excluídas deste núcleo, em vez de transportar código gerado pelo editor Swing para a futura aplicação web.
+
 ### Padrões e arquitetura
 
 O projeto usa **Repository** para isolar acesso a dados e **injeção de dependência por construtor** para desacoplar os casos de uso da infraestrutura. A separação segue camadas de domínio, aplicação e portas de persistência. Não inclui adaptador JDBC nem interface web; ambos podem ser implementados sem modificar `LivrariaService`.
