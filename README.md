@@ -44,5 +44,7 @@ O projeto usa **Repository** para isolar acesso a dados e **injeção de depend�
 
 ## Evidências do GitHub
 
-- Repositório: a publicar como `Antoniokobe/livrariafacil-core` (privado).
-- URL e evidências de publicação serão preenchidas após a criação e o envio do repositório.
+- Repositório privado: [github.com/Antoniokobe/livrariafacil-core](https://github.com/Antoniokobe/livrariafacil-core).
+- Branch publicada: `main`.
+- Commit inicial com o projeto e os testes: [6892a2f](https://github.com/Antoniokobe/livrariafacil-core/commit/6892a2f).
+- A estrutura de arquivos, o relatório e o histórico de publicação podem ser verificados diretamente no repositório.
