@@ -21,6 +21,8 @@ O JAR é gerado em `dist/LivrariaFacilCore.jar`. Os testes usam repositórios fa
 
 ## Relatório de refatoração e SOLID
 
+O relatório completo da atividade, organizado pelos princípios SOLID, refatorações e evidências do GitHub, está em [RELATORIO-REFATORACAO.md](./RELATORIO-REFATORACAO.md).
+
 ### Princípios SOLID aplicados
 
 - **SRP (responsabilidade única):** `LivrariaService` concentra validações e casos de uso; `Cliente`, `Livro`, `ItemDeVenda` e `Venda` representam o domínio; os contratos `ClienteRepository`, `LivroRepository` e `VendaRepository` isolam persistência. Classes de interface Swing, montagem de telas e `LivrariaController` não foram trazidas para o núcleo.
